@@ -2,18 +2,14 @@
   {
     "username": "jewelchidinma",
     "email": "jewelchidinma@gmail.com",
-    "password": "jewel18"
+    "password": "jewel18",
+    "role": "admin"
   },
 
   {
     "username": "chigirl",
     "email": "chigirl@yahoo.com",
-    "password": "chi13234"
-  },
-
-  {
-    "username": "yemi4life",
-    "email": "yemi30@yahoo.com",
-    "password": "yemisi90"
+    "password": "chi13234",
+    "role": "reader"
   }
 ]

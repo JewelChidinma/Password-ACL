@@ -25,7 +25,7 @@ const requestHandler = async function (req, res) {
     } else if (req.url === '/books' && req.method === 'POST') {
         authenticateUser(req, res, ["admin"])
             .then((book) => {
-                addBook(req, res, book);
+                addBook(req, res);
             })
             .catch((err) => {
                 res.statusCode = 401;
@@ -36,10 +36,30 @@ const requestHandler = async function (req, res) {
 
 
     } else if (req.url === '/books' && req.method === 'PUT') {
-        updateBook(req, res);
+          authenticateUser(req, res, ["admin"])
+            .then((book) => {
+                updateBook(req, res, book);
+            })
+            .catch((err) => {
+                res.statusCode = 401;
+                res.end(JSON.stringify({
+                    error: err
+                }));
+            })
+
         
     } else if (req.url.startsWith('/books') && req.method === 'DELETE') {
-        deleteBook(req, res);
+          authenticateUser(req, res, ["admin"])
+            .then((book) => {
+                deleteBook(req, res, book);
+            })
+            .catch((err) => {
+                res.statusCode = 401;
+                res.end(JSON.stringify({
+                    error: err
+                }));
+            })
+
     } else {
         res.writeHead(404);
         res.end(JSON.stringify({
